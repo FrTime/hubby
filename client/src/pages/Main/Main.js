@@ -6,6 +6,7 @@ import WeatherAPI from "../../components/WeatherAPI";
 import Widget from "../../components/Widget";
 import Calendar from "react-calendar";
 import "./Main.css";
+import TwitterWidget from "../../components/TwitterWidget";
 
 
 class Main extends Component {
@@ -30,6 +31,8 @@ class Main extends Component {
             <div className="back" style={{backgroundColor: "grey",}}>
 
                     {/* <img src="https://placeimg.com/1000/500/arch" /> */}
+            
+            <TwitterWidget/>
 
            {this.state.activeWidgets.map((item, i) =>
               <Widget
