@@ -1,49 +1,72 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 // import Interactable from "../../components/Interactable";
+
+import WeatherAPI from "../../components/WeatherAPI";
 import Widget from "../../components/Widget";
+import Calendar from "react-calendar";
+import "./Main.css";
 
 
 class Main extends Component {
 
     state = {
-
+        activeWidgets: [ 
+            Calendar,
+            WeatherAPI,
+        ],
     };
+
+    // componentDidMount = () => {
+      
+    // }
+    
 
 
 
     render() {
-        return(
-        <React.Fragment>
-            <Widget />
 
-            <i class="material-icons">mail_outline</i>
+        return (
+            <div className="back" style={{backgroundColor: "grey",}}>
 
-            <div class="fixed-action-btn">
-                <a class="btn-floating btn-large grey darken-3">
-                    <i class="large material-icons">settings</i>
-                </a>
-                <ul>
-                    <li>
-                        <button class="btn-floating red">
-                            Color
+                    {/* <img src="https://placeimg.com/1000/500/arch" /> */}
+
+           {this.state.activeWidgets.map((item, i) =>
+              <Widget
+                key={i}
+                type={this.state.activeWidgets[i]} />)}
+                    {/* <Widget widgetType={WeatherAPI}/> */}
+
+                    {/* <i className="material-icons">mail_outline</i>
+
+                    <div className="fixed-action-btn">
+                        <a className="btn-floating btn-large grey darken-3">
+                            <i className="large material-icons">settings</i>
+                        </a>
+                        <ul>
+                            <li>
+                                <button className="btn-floating red">
+                                    Color
                 </button>
-                    </li>
-                    <li>
-                        <button class="btn-floating green">
-                            Add
+                            </li>
+                            <li>
+                                <button className="btn-floating green">
+                                    Add
                 </button>
-                    </li>
-                    <li>
-                        <button class="btn-floating blue">
-                            Edit
+                            </li>
+                            <li>
+                                <button className="btn-floating blue">
+                                    Edit
                 </button>
-                    </li>
-                </ul>
+                            </li>
+                        </ul>
+                    </div> */}
+
             </div>
-        </React.Fragment>
+
         )
     }
 }
 
-export default Home;
+export default Main;
+

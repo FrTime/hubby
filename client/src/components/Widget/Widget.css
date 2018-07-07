@@ -1,8 +1,35 @@
 .widget{
-    background-color: aqua;
-    padding: 1.5em;
-    margin: 1.5em;
-    border-radius: 15%;
-    height: 100%;
-    width: 100%;
+
+    position: relative;
+    bottom: 0px;
+    color: gold;
+    background-color: rgba(0,0,0,0.23);
+    border-radius: 5%;
+    overflow: hidden;
+    min-width: 250px;
+    min-height: 250px;
+margin: 0 auto;
+padding: 0;
+height: 100%;
+width: 100%;
+border: 2px solid rgb(25, 25, 25);
+box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
 }
+p {
+    margin: 0;
+    padding: 0;
+}
+
+/* .react-calendar{
+    background-color: orange;
+} */
+
+widget * {
+    background-color: teal;
+}
+
+.react-calendar div{
+    background-color: rgba(0,0,0,0.23);
+
+  }

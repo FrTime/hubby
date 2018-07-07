@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import interact from "interactjs"
+import "./Interactable.css";
 
 export default class Interactable extends Component {
 
