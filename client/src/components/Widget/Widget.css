@@ -2,12 +2,12 @@
 
     position: relative;
     bottom: 0px;
-    color: #fff;
-    background-color: rgba(20, 20, 20, 0.66);
+    color: gold;
+    background-color: rgba(0,0,0,0.23);
     border-radius: 5%;
     overflow: hidden;
-    min-width: 100px;
-    min-height: 100px;
+    min-width: 250px;
+    min-height: 250px;
 margin: 0 auto;
 padding: 0;
 height: 100%;
@@ -20,3 +20,16 @@ p {
     margin: 0;
     padding: 0;
 }
+
+/* .react-calendar{
+    background-color: orange;
+} */
+
+widget * {
+    background-color: teal;
+}
+
+.react-calendar div{
+    background-color: rgba(0,0,0,0.23);
+
+  }
