@@ -9,7 +9,7 @@ import API from "../../util/API";
 
 export default class Widget extends Component {
     state = {
-        
+        // needs to be changed to GET position data from db
         width: 305,
         height: 305,
         x: (window.innerWidth / 3) ,
@@ -64,6 +64,7 @@ export default class Widget extends Component {
                             height={this.state.height}
                             x={this.state.x}
                             y={this.state.y}
+                            mode={this.props.mode}
                              />
                     </div>
                 </Rnd>

@@ -27,7 +27,8 @@ export default {
     return axios.post("/api/user", userData);
   },
   updateUserData: function (userData) {
-    return axios.put("/api/user", userData);
+    console.log("api update reached")
+    return axios.put("/api/:id", userData);
   },
 
 };

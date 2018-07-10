@@ -26,6 +26,7 @@ class Main extends Component {
     handleBtnClick = event => {
         let newState = { ...this.state }
         newState.staticMode = eval(event.target.getAttribute("value"));
+
         this.setState({ ...newState })
         console.log("click handled")
         console.log(event)
@@ -48,6 +49,7 @@ class Main extends Component {
                         key={i}
                         type={this.state.activeWidgets[i]}
                         draggable={this.state.staticMode}
+                        mode={this.state.staticMode}
                         resizable={(this.state.staticMode == true)? false : true}
                     />
                 )}

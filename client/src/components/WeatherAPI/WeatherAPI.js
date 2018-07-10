@@ -15,25 +15,30 @@ export default class WeatherAPI extends Component {
     };
     componentDidMount(props) {
         this.queryAPI(this.state.location)
-        this.updateData(this.props.width, this.props.height, this.props.x, this.props.y)
+        // this.saveData(this.props.width, this.props.height, this.props.x, this.props.y)
 
+    }
+
+    componentDidUpdate(props) {
+        // this.saveData(this.props.width, this.props.height, this.props.x, this.props.y)
+        this.updateData(this.props.width, this.props.height, this.props.x, this.props.y)
     }
 
     updateData = (weatherAPIWidth, weatherAPIHeight, weatherAPIX, weatherAPIY) => {
 
+        console.log(weatherAPIX + " " + weatherAPIY)
 
+        API.updateUserData(
 
-        API.updateUserData({ id: 'ObjectId("5b43f4935d55e3496c553bb5")' },
             {
-                $set: {
-                    weatherAPIWidth: weatherAPIWidth,
-                    weatherAPIHeight: weatherAPIHeight,
-                    weatherAPIX: weatherAPIX,
-                    weatherAPIY: weatherAPIY,
-                }
+                weatherAPIWidth: weatherAPIWidth,
+                weatherAPIHeight: weatherAPIHeight,
+                weatherAPIX: weatherAPIX,
+                weatherAPIY: weatherAPIY,
+
             })
 
-            .then(console.log("saved"))
+            .then(console.log("updated"))
             .catch(err => console.log(err));
     };
 
@@ -42,6 +47,8 @@ export default class WeatherAPI extends Component {
 
 
         API.saveUserData({
+
+            userName: "Jackie",
             weatherAPIWidth: weatherAPIWidth,
             weatherAPIHeight: weatherAPIHeight,
             weatherAPIX: weatherAPIX,
