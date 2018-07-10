@@ -1,4 +1,5 @@
 module.exports = {
-    User: require("./hubby")
+    User: require("./hubby"),
+    Device: require("./devices")
   };
   

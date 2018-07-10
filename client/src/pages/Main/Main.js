@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 // import { Link } from "react-router-dom";
 // import Interactable from "../../components/Interactable";
-
+import Settings from "../../components/Settings";
 import WeatherAPI from "../../components/WeatherAPI";
+import Button from "../../components/Button";
 import Widget from "../../components/Widget";
 import Calendar from "react-calendar";
 import "./Main.css";
@@ -11,57 +12,48 @@ import "./Main.css";
 class Main extends Component {
 
     state = {
-        activeWidgets: [ 
+        staticMode: false,
+        activeWidgets: [
             Calendar,
             WeatherAPI,
         ],
     };
 
     // componentDidMount = () => {
-      
+
     // }
-    
 
+    handleBtnClick = event => {
+        let newState = { ...this.state }
+        newState.staticMode = eval(event.target.getAttribute("value"));
+        this.setState({ ...newState })
+        console.log("click handled")
+        console.log(event)
+        console.log(this.state.staticMode)
+    }
 
+    saveUserData = () => {
+
+    }
 
     render() {
 
         return (
-            <div className="back" style={{backgroundColor: "grey",}}>
+            <div className="back" style={{ backgroundColor: "grey", position: "relative", }}>
 
-                    {/* <img src="https://placeimg.com/1000/500/arch" /> */}
 
-           {this.state.activeWidgets.map((item, i) =>
-              <Widget
-                key={i}
-                type={this.state.activeWidgets[i]} />)}
-                    {/* <Widget widgetType={WeatherAPI}/> */}
 
-                    {/* <i className="material-icons">mail_outline</i>
-
-                    <div className="fixed-action-btn">
-                        <a className="btn-floating btn-large grey darken-3">
-                            <i className="large material-icons">settings</i>
-                        </a>
-                        <ul>
-                            <li>
-                                <button className="btn-floating red">
-                                    Color
-                </button>
-                            </li>
-                            <li>
-                                <button className="btn-floating green">
-                                    Add
-                </button>
-                            </li>
-                            <li>
-                                <button className="btn-floating blue">
-                                    Edit
-                </button>
-                            </li>
-                        </ul>
-                    </div> */}
-
+                {this.state.activeWidgets.map((item, i) =>
+                    <Widget
+                        key={i}
+                        type={this.state.activeWidgets[i]}
+                        draggable={this.state.staticMode}
+                        resizable={(this.state.staticMode == true)? false : true}
+                    />
+                )}
+                <Button
+                    value={(this.state.staticMode === false) ? true : false}
+                    handleBtnClick={this.handleBtnClick} />
             </div>
 
         )

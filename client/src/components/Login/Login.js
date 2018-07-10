@@ -35,22 +35,26 @@ const Login = props => (
         </label>
         <Link to="/Main">
           <button
-            className="btn btn-lg btn-dark btn-block"
-            // type="submit"
-            // onClick={props.handleFormSubmit}
+
+            className="btn btn-lg btn-primary btn-block"
+          // type="submit"
+          // onClick={props.handleFormSubmit}
+           
           >
             Login
           </button>
         </Link>
         <div className="row">
-          <div className="hor-line1 col-md-5" />
-          <h5 className="text-center either-or col-md-2"> or </h5>
-          <div className="hor-line2 col-md-5" />
+
+          {/* <div className="hor-line1 col-md-5" /> */}
+          <h5 className="text-center either-or"> or </h5>
+          {/* <div className="hor-line2 col-md-5" /> */}
         </div>
         <Link to="/register">
           <button
-            className="btn btn-lg btn-dark btn-block"
-            // type="submit"
+            className="btn btn-lg btn-primary btn-block"
+          // type="submit"
+
           >
             Register
           </button>

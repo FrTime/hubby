@@ -57,5 +57,7 @@ body {
     transform: translateY(-50%);
   }
   
-  
- 
+  .btn {
+    background-color: #343a40;
+    color: white !important;
+  }

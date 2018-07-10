@@ -4,33 +4,19 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
   name: { type: String, required: false },
   userName: { type: String, required: false },
-  password: { type: String, required: true },
-  email: { type: String, required: true },
+  password: { type: String, required: false },
+  email: { type: String, required: false },
   date: { type: Date, default: Date.now },
-  devices: [{
-    name: String,
-    widgets: {
-      weatherAPI: {
-        zipcode: Number,
-        settings: {
-          x: Number,
-          y: Number,
-          height: Number,
-          Width: Number,
-        },
-      },
-      calendar: {
-        appointments: [String],
-        settings: {
-          x: Number,
-          y: Number,
-          height: Number,
-          Width: Number,
-        },
-      }
-    },
-  },
-  ]
+
+  weatherAPIWidth: {type: Number},
+  weatherAPIHeight: {type: Number},
+  weatherAPIX: {type: Number},
+  weatherAPIY: {type: Number},
+  calendarWidth: {type: Number},
+  calendarHeight: {type: Number},
+  calendarX: {type: Number},
+  calendarY: {type: Number},
+
 });
 
 const User = mongoose.model("User", userSchema);

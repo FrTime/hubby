@@ -32,8 +32,9 @@ const Register = props => (
           onChange={props.handleInputChange}
         />
         <button
-          className="btn btn-lg btn-dark btn-block"
+          className="btn btn-lg btn-primary btn-block"
           onClick={props.handleRegister}
+          href="/Main"
         >
           Register
         </button>
