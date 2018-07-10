@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+=======
+
 # Logs
 logs
 *.log
@@ -25,38 +29,26 @@ coverage
 
 # Bower dependency directory (https://bower.io/)
 bower_components
+>>>>>>> Develop
 
-# node-waf configuration
-.lock-wscript
-
-# Compiled binary addons (https://nodejs.org/api/addons.html)
-build/Release
-
-# Dependency directories
-node_modules/
-jspm_packages/
+# dependencies
+/node_modules
 /client/node_modules
 
-# TypeScript v1 declaration files
-typings/
 
-# Optional npm cache directory
-.npm
+# testing
+/coverage
 
-# Optional eslint cache
-.eslintcache
+# production
+/build
 
-# Optional REPL history
-.node_repl_history
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-# Output of 'npm pack'
-*.tgz
-
-# Yarn Integrity file
-.yarn-integrityubje
-
-# dotenv environment variables file
-.env
-
-# next.js build output
-.next
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

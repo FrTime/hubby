@@ -19,6 +19,7 @@ body {
   
   .checkbox {
     margin-bottom: 30px;
+    margin-left: 30px;
   }
   
   .form-control {
@@ -42,20 +43,22 @@ body {
   }
   
   .either-or {
-    margin-top: 5px;
+    padding-top: 5px;
   }
   
-  .hor-line1 {
-    width: auto;
-    border-bottom: 2px #4a4744 solid;
-    transform: translateY(-50%);
-  }
   
+
   .hor-line2 {
     width: auto;
     border-bottom: 2px #4a4744 solid;
     transform: translateY(-50%);
   }
+
+  .btn {
+    background-color: #343a40;
+    color: white !important;
+  }
+
   
   
  

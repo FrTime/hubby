@@ -19,7 +19,6 @@
     "url": "https://github.com/FrTime/hubby/issues"
   },
   "dependencies": {
-    "@okta/okta-react": "^1.0.2",
     "axios": "^0.18.0",
     "babel": "^6.23.0",
     "body-parser": "^1.18.3",

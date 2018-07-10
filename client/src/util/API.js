@@ -6,7 +6,7 @@ const weatherApiKey = ",us&appid=bd0d3906d4a9c29f579ad1a5dd40d33c";
 
 // const weatherQuery = "23060";
 
-// Export an object with a "search" method that searches the Giphy API for the passed query
+
 export default {
   weatherSearch: function (weatherQuery) {
     return axios.get(weatherURL + weatherQuery + weatherApiKey);
