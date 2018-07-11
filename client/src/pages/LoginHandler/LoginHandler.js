@@ -4,6 +4,14 @@ import Register from "../../components/Register";
 import API from "../../util/API";
 import Main from "../Main";
 import { Link } from "react-router-dom";
+import { Popover } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
+
+const popoverRight = (
+  <Popover id="popover-positioned-right" title="Popover right">
+    <strong>Holy guacamole!</strong> Check this info.
+  </Popover>
+);
 
 class LoginHandler extends Component {
   state = {
@@ -32,6 +40,12 @@ class LoginHandler extends Component {
     }
   };
 
+  // handlePasswordCheck = () => {
+  //   <Popover id="popover-positioned-scrolling-right" title="Popover right">
+  //     <strong>Holy guacamole!</strong> Check this info.
+  //   </Popover>;
+  // };
+
   handleFormSubmit = event => {
     console.log("whoopsies");
     event.preventDefault();
@@ -47,16 +61,15 @@ class LoginHandler extends Component {
         .catch(err => console.log(err));
     }
   };
- 
 
   getUser = query => {
     // API.getUser(query);
     {
       return (
-      <Link>
-        <Main />
-      </Link>
-      )
+        <Link>
+          <Main />
+        </Link>
+      );
     }
   };
 
@@ -74,6 +87,7 @@ class LoginHandler extends Component {
           handleInputChange={this.handleInputChange}
           handleRegister={this.handleRegister}
           goToRegister={this.goToRegister}
+          handlePasswordCheck={popoverRight}
         />
       </div>
     );
