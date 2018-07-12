@@ -6,6 +6,8 @@ import WeatherAPI from "../../components/WeatherAPI";
 import Button from "../../components/Button";
 import Widget from "../../components/Widget";
 import Calendar from "react-calendar";
+import TwitterWidget from "../../components/TwitterWidget"; 
+
 import "./Main.css";
 
 
