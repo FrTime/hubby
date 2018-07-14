@@ -1,0 +1,67 @@
+/* .modal-container {
+  position: relative;
+} */
+
+body {
+  background: #4a4744 !important;
+}
+
+.wrapper {
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+
+.form-signin {
+  max-width: 380px;
+  padding: 15px 35px 45px;
+  margin: 0 auto;
+  background-color: white;
+  border: 1px solid black;
+  box-shadow: 20px 20px;
+  border-radius: 8px;
+}
+
+.checkbox {
+  margin-bottom: 30px;
+  margin-left: 30px;
+}
+
+.form-control {
+  position: relative;
+  font-size: 16px;
+  height: auto;
+  padding: 10px;
+  z-index: 2;
+}
+
+.form-signin-heading {
+  margin-bottom: 20px;
+}
+
+input[type="text"] {
+  margin-bottom: 5px;
+}
+
+input[type="password"] {
+  margin-bottom: 20px;
+}
+
+.either-or {
+  padding-top: 5px;
+}
+
+.hor-line2 {
+  width: auto;
+  border-bottom: 2px #4a4744 solid;
+  transform: translateY(-50%);
+}
+
+.btn {
+  background-color: #343a40;
+  color: white !important;
+}
+
+.modal-header {
+  /* background-color: #252322; */
+  /* opacity: 0; */
+}

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import API from "../../util/API.js";
 
 
+
 export default class WeatherAPI extends Component {
     constructor(props) {
         super(props);
@@ -23,7 +24,7 @@ export default class WeatherAPI extends Component {
 
 
 
-        API.updateUserData({ id: 'ObjectId("5b43f4935d55e3496c553bb5")' },
+        API.updateUserData({ id: this.id },
             {
                 $set: {
                     weatherAPIWidth: weatherAPIWidth,

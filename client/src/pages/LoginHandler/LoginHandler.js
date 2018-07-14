@@ -1,23 +1,31 @@
 import React, { Component } from "react";
-import Login from "../../components/Login";
 import Register from "../../components/Register";
 import API from "../../util/API";
 import Main from "../Main";
 import { Link } from "react-router-dom";
-import { Popover } from "react-bootstrap";
-import { Modal } from "react-bootstrap";
-
-const popoverRight = (
-  <Popover id="popover-positioned-right" title="Popover right">
-    <strong>Holy guacamole!</strong> Check this info.
-  </Popover>
-);
+import Trigger from "../../components/Trigger";
 
 class LoginHandler extends Component {
   state = {
     password: "",
     email: "",
-    password2: ""
+    password2: "",
+    userData: []
+  };
+
+  componentDidMount() {
+    //this.loadUserSettings();
+  }
+  // THIS should happen on the main page?
+  // loadUserSettings = (res) => {
+  //  console.log(res);
+  //      this.setState({ userData: res.data });
+  //      this.props.history.push('/Main/:id/' + res.data._id);
+
+  loadUserSettings = res => {
+    console.log(res);
+    this.setState({ userData: res.data });
+    this.props.history.push("/Main/" + res.data._id);
   };
 
   handleInputChange = event => {
@@ -30,46 +38,28 @@ class LoginHandler extends Component {
   };
 
   handleRegister = event => {
+    console.log("click");
     event.preventDefault();
     if (this.state.password !== this.state.password2) {
       alert("these no match yo");
     } else if (this.state.password === this.state.password2) {
-      alert("you deed it");
-      this.handleFormSubmit();
-      this.getUser();
-    }
-  };
-
-  // handlePasswordCheck = () => {
-  //   <Popover id="popover-positioned-scrolling-right" title="Popover right">
-  //     <strong>Holy guacamole!</strong> Check this info.
-  //   </Popover>;
-  // };
-
-  handleFormSubmit = event => {
-    console.log("whoopsies");
-    event.preventDefault();
-    // this.getUser();
-    if (this.state.email && this.state.password) {
-      API.saveUser({
-        name: this.state.name,
+      API.saveUserData({
         password: this.state.password,
         email: this.state.email,
-        devices: this.state.devices
+        //maybe we need to have a method that sets a default value for the weather/calendar api's so when user is created
+      //they already have values in their userObject
+        weatherAPIWidth: this.state.weatherAPIWidth,
+        weatherAPIHeight: this.state.weatherAPIHeight,
+        weatherAPIX: this.weatherAPIX,
+        weatherAPIY: this.weatherAPIY,
+        calendarWidth: this.calendarWidth,
+        calendarHeight: this.calendarHeight,
+        calendarX: this.calendarX,
+        calendarY: this.calendarY
       })
-        .then(res => this.handleRegister())
+        .then(() => this.props.history.push("/Main/:id"))
         .catch(err => console.log(err));
-    }
-  };
-
-  getUser = query => {
-    // API.getUser(query);
-    {
-      return (
-        <Link>
-          <Main />
-        </Link>
-      );
+      
     }
   };
 
@@ -81,14 +71,56 @@ class LoginHandler extends Component {
 
   render() {
     return (
-      <div>
-        <Login
-          handleFormSubmit={this.handleFormSubmit}
-          handleInputChange={this.handleInputChange}
-          handleRegister={this.handleRegister}
-          goToRegister={this.goToRegister}
-          handlePasswordCheck={popoverRight}
-        />
+      <div className="container">
+        <div className="wrapper">
+          <form className="form-signin">
+            <h3 className="form-signin-heading text-center">Login to Hubby:</h3>
+            <input
+              type="email"
+              className="form-control"
+              name="username"
+              placeholder="Email Address"
+              required
+              autofocus=""
+              onChange={this.handleInputChange}
+            />
+            <input
+              type="password"
+              className="form-control"
+              name="password"
+              placeholder="Password"
+              required
+              onChange={this.handleInputChange}
+            />
+            <label className="checkbox">
+              <input
+                type="checkbox"
+                value="remember-me"
+                id="rememberMe"
+                name="rememberMe"
+              />{" "}
+              Remember me
+            </label>
+            <a
+              className="btn btn-lg btn-primary btn-block"
+              // onClick={}
+              // type="submit"
+              // onClick={props.handleFormSubmit}
+            >
+              Login
+            </a>
+            <div className="row">
+              <h5 className="text-center either-or"> or </h5>
+            </div>
+
+            <Trigger
+              handlePasswordCheck={this.handlePasswordCheck}
+              handleInputChange={this.handleInputChange}
+              handleRegister={this.handleRegister}
+              state={this.state}
+            />
+          </form>
+        </div>
       </div>
     );
   }

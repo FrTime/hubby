@@ -14,15 +14,15 @@ export default class Widget extends Component {
         height: 305,
         x: (window.innerWidth / 3) ,
         y: (window.innerHeight / 3) ,
+        
     }
 
-    componentDidMount() {
+    
 
-    }
 
     saveData = (width, height) => {
 
-        API.saveUserData({
+        API.updateUserData({
           username: width,
           password: height,
 

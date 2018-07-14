@@ -13,8 +13,8 @@ const App = () => (
         <Route exact path="/" component={Splash} />
         <Route exact path="/login" component={LoginHandler} />
         <Route exact path="/register" component={Register} />
-        {/* line 12 will be the path for the main page/line 11 will be amended to splash */}
-        <Route exact path="/Main" component={Main} />
+      
+        <Route path="/Main/:id" component={Main} />
       </Switch>
     </div>
   </Router>

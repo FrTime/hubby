@@ -26,6 +26,9 @@ export default {
   getUserDataById: function (id) {
     return axios.get("/api/user/" + id);
   },
+  getUserDataById: function (id) {
+    return axios.get("/api/user/" + id);
+  },
   // Deletes the article with the given id
   deleteUserData: function (id) {
     return axios.delete("/api/user/" + id);

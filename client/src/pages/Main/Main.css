@@ -6,3 +6,7 @@ React.Fragment{
     background-color: blue;
     color: green;
   }
+.myBtn{
+    width:175px;
+    height: 50px;
+}

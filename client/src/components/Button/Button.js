@@ -1,17 +1,13 @@
-import React from 'react'
+import React from "react";
 
-const Button = props => (
-
-    <div>
-        <button
-            value={props.value}
-            onClick={props.handleBtnClick}
-        > toggle </button>
-    </div>
-)
-
-
-
-
+// Destructuring the type, className, children and onClick props, applying them to the button element
+const Button = ({ type = "default", className, children, onClick }) => (
+  <button
+    onClick={onClick}
+    className={["btn btn-lg", `btn-${type}`, className].join(" ")}
+  >
+    {children}
+  </button>
+);
 
 export default Button;
