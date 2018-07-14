@@ -2,6 +2,19 @@ import React from "react";
 import "./Trigger.css";
 import { Modal } from "react-bootstrap";
 
+import { ToastContainer, toast } from "react-toastify";
+
+function validateEmail(email) {
+  var re = /\S+@\S+\.\S+/;
+  return re.test(email);
+}
+
+const Msg = () => (
+  <div>
+    Please enter a valid email address and ensure that the passwords match.
+  </div>
+);
+
 export default class Trigger extends React.Component {
   constructor(props, context) {
     super(props, context);
@@ -33,7 +46,7 @@ export default class Trigger extends React.Component {
                 Create an account:
               </h3>
               <input
-                type="text"
+                type="email"
                 className="form-control"
                 name="email"
                 placeholder="Email Address"
@@ -47,6 +60,7 @@ export default class Trigger extends React.Component {
                 name="password"
                 placeholder="Password"
                 required
+                minlength="8"
                 onChange={this.props.handleInputChange}
               />
               <input
@@ -55,15 +69,24 @@ export default class Trigger extends React.Component {
                 name="password2"
                 placeholder="Confirm password"
                 required
+                minlength="8"
                 onFocus={this.props.handlePasswordCheck}
                 onChange={this.props.handleInputChange}
               />
+              <div>
+                <ToastContainer />
+              </div>
               <a
                 className="btn btn-lg btn-primary btn-block"
-                onClick={this.props.handleRegister}
-                // href="/Main"
+                onClick={
+                  this.props.state.password === this.props.state.password2 &&
+                  this.props.state.password.length > 1 &&
+                  validateEmail(this.props.state.email)
+                    ? this.props.handleRegister
+                    : () => toast(<Msg />)
+                }
               >
-                Make Account
+                Get Your New Hubby
               </a>
             </form>
           </Modal.Header>
