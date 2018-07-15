@@ -15,9 +15,6 @@ const Splash = () => (
           </a>
         </div>
         <img className='myimg' src={logo} alt='logo goes here' width='225' height='225'/>
-        {/* <div>
-          <h1 id="splashh1">hubby.</h1>
-        </div> */}
       </header>
     </div>
 

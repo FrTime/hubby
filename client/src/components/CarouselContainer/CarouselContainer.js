@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import  {Carousel} from 'react-bootstrap';
 import "./CarouselContainer.css";
 import pic from './smartmirrorproject2.jpg';
-import screen from './weather_widget.jpg';
 import forest from './screen.jpg';
 import lobby from "./lobby4.jpg";
 
@@ -18,7 +17,7 @@ return(
     <img width={"100%"} height={"auto"} alt="900x500" src={pic} />
     <Carousel.Caption className='carouseldata'>
       <h3>Smart Mirror</h3>
-      <p>New possibilities for better time management. <br/>Start your day in the know...</p>
+      <p >New possibilities for better time management. <br/>Start your day in the know...</p>
     </Carousel.Caption>
   </Carousel.Item>
   <Carousel.Item >
