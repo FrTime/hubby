@@ -4,6 +4,9 @@ import API from "../../util/API";
 import Main from "../Main";
 import { Link } from "react-router-dom";
 import Trigger from "../../components/Trigger";
+import { ToastContainer, toast } from "react-toastify";
+
+const Msg = () => <div>This password is incorrect.</div>;
 
 class LoginHandler extends Component {
   state = {
@@ -22,10 +25,20 @@ class LoginHandler extends Component {
   //      this.setState({ userData: res.data });
   //      this.props.history.push('/Main/:id/' + res.data._id);
 
-  loadUserSettings = res => {
-    console.log(res);
-    this.setState({ userData: res.data });
-    this.props.history.push("/Main/" + res.data._id);
+  loadUserSettings = event => {
+    // console.log(res);
+    event.preventDefault();
+    API.getUserDataByEmail(this.state.email)
+      // .then(res => console.log(res.data[0]))
+      .then(res => {
+        if (this.state.password === res.data[0].password) {
+          this.props.history.push("/Main/:id" + res.data[0]._id);
+        } else {
+          toast(<Msg />);
+        }
+      })
+      .catch(err => console.log(err));
+    // this.setState({ userData: res.data });
   };
 
   handleInputChange = event => {
@@ -40,27 +53,23 @@ class LoginHandler extends Component {
   handleRegister = event => {
     console.log("click");
     event.preventDefault();
-    if (this.state.password !== this.state.password2) {
-      alert("these no match yo");
-    } else if (this.state.password === this.state.password2) {
-      API.saveUserData({
-        password: this.state.password,
-        email: this.state.email,
-        //maybe we need to have a method that sets a default value for the weather/calendar api's so when user is created
+
+    API.saveUserData({
+      password: this.state.password,
+      email: this.state.email,
+      //maybe we need to have a method that sets a default value for the weather/calendar api's so when user is created
       //they already have values in their userObject
-        weatherAPIWidth: this.state.weatherAPIWidth,
-        weatherAPIHeight: this.state.weatherAPIHeight,
-        weatherAPIX: this.weatherAPIX,
-        weatherAPIY: this.weatherAPIY,
-        calendarWidth: this.calendarWidth,
-        calendarHeight: this.calendarHeight,
-        calendarX: this.calendarX,
-        calendarY: this.calendarY
-      })
-        .then(() => this.props.history.push("/Main/:id"))
-        .catch(err => console.log(err));
-      
-    }
+      weatherAPIWidth: this.state.weatherAPIWidth,
+      weatherAPIHeight: this.state.weatherAPIHeight,
+      weatherAPIX: this.weatherAPIX,
+      weatherAPIY: this.weatherAPIY,
+      calendarWidth: this.calendarWidth,
+      calendarHeight: this.calendarHeight,
+      calendarX: this.calendarX,
+      calendarY: this.calendarY
+    })
+      .then(() => this.props.history.push("/Main/:id"))
+      .catch(err => console.log(err));
   };
 
   goToRegister = event => {
@@ -78,7 +87,7 @@ class LoginHandler extends Component {
             <input
               type="email"
               className="form-control"
-              name="username"
+              name="email"
               placeholder="Email Address"
               required
               autofocus=""
@@ -92,6 +101,7 @@ class LoginHandler extends Component {
               required
               onChange={this.handleInputChange}
             />
+            <ToastContainer />
             <label className="checkbox">
               <input
                 type="checkbox"
@@ -105,7 +115,7 @@ class LoginHandler extends Component {
               className="btn btn-lg btn-primary btn-block"
               // onClick={}
               // type="submit"
-              // onClick={props.handleFormSubmit}
+              onClick={this.loadUserSettings}
             >
               Login
             </a>

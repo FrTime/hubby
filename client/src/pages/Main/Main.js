@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 // import { Link } from "react-router-dom";
-
-// import Settings from "../../components/Settings";
 import WeatherAPI from "../../components/WeatherAPI";
 import Button from "../../components/Button";
 import Widget from "../../components/Widget";
@@ -19,7 +17,6 @@ class Main extends Component {
     activeId: "",
     staticMode: false,
     activeWidgets: [Calendar, WeatherAPI],
-    activeId:""
   };
 
   componentDidMount = () => {
@@ -57,7 +54,7 @@ class Main extends Component {
     return (
       <div
         className="back"
-        style={{ backgroundColor: "grey", position: "relative" }}
+        style={{ backgroundColor: "gray", position: "relative"}}
       >
         {this.state.activeWidgets.map((item, i) => (
           <Widget
@@ -76,7 +73,10 @@ class Main extends Component {
         </Button>
         <Button 
         className='myBtn'
-        onClick={this.handleBtnClick}>Change Settings</Button>
+        onClick={this.changeSettings}>Change Settings</Button>
+        <Button 
+        className='myBtn'
+        onClick={this.handleBtnClick}>Add Widgets</Button>
       </div>
     );
   }

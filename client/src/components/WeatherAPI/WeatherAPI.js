@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import API from "../../util/API.js";
 
 
-
 export default class WeatherAPI extends Component {
     constructor(props) {
         super(props);
@@ -16,15 +15,19 @@ export default class WeatherAPI extends Component {
     };
     componentDidMount(props) {
         this.queryAPI(this.state.location)
-        this.updateData(this.props.width, this.props.height, this.props.x, this.props.y)
+        // this.updateData(this.props.width, this.props.height, this.props.x, this.props.y)
 
+    }
+
+    componentDidUpdate(props) {
+        this.updateData(this.props.width, this.props.height, this.props.x, this.props.y)
     }
 
     updateData = (weatherAPIWidth, weatherAPIHeight, weatherAPIX, weatherAPIY) => {
 
 
 
-        API.updateUserData({ id: this.id },
+        API.updateUserData(
             {
                 $set: {
                     weatherAPIWidth: weatherAPIWidth,
@@ -33,8 +36,7 @@ export default class WeatherAPI extends Component {
                     weatherAPIY: weatherAPIY,
                 }
             })
-
-            .then(console.log("saved"))
+            .then(console.log("updated"))
             .catch(err => console.log(err));
     };
 

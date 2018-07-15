@@ -1,6 +1,7 @@
 import React from "react";
 import "./Trigger.css";
 import { Modal } from "react-bootstrap";
+
 import { ToastContainer, toast } from "react-toastify";
 
 function validateEmail(email) {

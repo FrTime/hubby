@@ -53,7 +53,7 @@ export default class Widget extends Component {
                         });
                     }}
                     disableDragging={this.props.draggable}
-
+                    
                 >
                     <div className="widget">
                         < this.props.type 
@@ -64,6 +64,7 @@ export default class Widget extends Component {
                             height={this.state.height}
                             x={this.state.x}
                             y={this.state.y}
+                            id={this.state.activeId}
                              />
                     </div>
                 </Rnd>

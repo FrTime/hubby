@@ -9,11 +9,13 @@ img{
 
 .carouseldata{
     background-color: lightgray;
-    opacity: .7;
+    opacity: .6;
     color: black;
     width: 450px;
     border-radius: 10px;
     height: 120px;
     padding: 10px;
+    margin-left: 575px;
+    margin-bottom: 175px;
     
 }
