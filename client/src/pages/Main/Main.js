@@ -17,7 +17,7 @@ class Main extends Component {
     console.log(props.match.params);
   }
   state = {
-    activeId: "",
+    activeId: this.props.match.params.id,
     staticMode: false,
     activeWidgets: [],
     activeWidgetsString: [],
@@ -46,13 +46,14 @@ class Main extends Component {
 
   componentDidMount = () => {
     console.log("on init :" + this.state);
+    console.log(this.state);
     // setTimeout(
-    this.setState({
-      activeId: this.props.match.params.id
-    }),
-      // 500
-      // );
-      this.loadUserSettings();
+    // this.setState({
+    //   activeId: this.props.match.params.id
+    // }),
+    // 500
+    // );
+    this.loadUserSettings();
   };
 
   handleWidgetLoad = () => {
@@ -186,31 +187,32 @@ class Main extends Component {
 
   loadUserSettings = event => {
     console.log("loading user settings...");
+    console.log(this.state.activeId);
     API.getUserDataById(this.state.activeId)
       .then(res => {
-        console.log(res.data[0]);
+        console.log(res.data);
         let newState = {
-          activeWidgetsString: res.data[0].activeWidgetsString,
-          weatherAPIHeight: res.data[0].weatherAPIHeight,
-          weatherAPIWidth: res.data[0].weatherAPIWidth,
-          weatherAPIX: res.data[0].weatherAPIX,
-          weatherAPIY: res.data[0].weatherAPIY,
-          twitterHeight: res.data[0].twitterHeight,
-          twitterWidth: res.data[0].twitterWidth,
-          twitterX: res.data[0].twitterX,
-          twitterY: res.data[0].twitterY,
-          calendarHeight: res.data[0].calendarHeight,
-          calendarWidth: res.data[0].calendarWidth,
-          calendarX: res.data[0].calendarX,
-          calendarY: res.data[0].calendarY,
-          worldClockHeight: res.data[0].worldClockHeight,
-          worldClockWidth: res.data[0].worldClockWidth,
-          worldClockX: res.data[0].worldClockX,
-          worldClockY: res.data[0].worldClockY,
-          trafficReportHeight: res.data[0].trafficReportHeight,
-          trafficReportWidth: res.data[0].trafficReportWidth,
-          trafficReportX: res.data[0].trafficReportX,
-          trafficReportY: res.data[0].trafficReportY
+          activeWidgetsString: res.data.activeWidgetsString,
+          weatherAPIHeight: res.data.weatherAPIHeight,
+          weatherAPIWidth: res.data.weatherAPIWidth,
+          weatherAPIX: res.data.weatherAPIX,
+          weatherAPIY: res.data.weatherAPIY,
+          twitterHeight: res.data.twitterHeight,
+          twitterWidth: res.data.twitterWidth,
+          twitterX: res.data.twitterX,
+          twitterY: res.data.twitterY,
+          calendarHeight: res.data.calendarHeight,
+          calendarWidth: res.data.calendarWidth,
+          calendarX: res.data.calendarX,
+          calendarY: res.data.calendarY,
+          worldClockHeight: res.data.worldClockHeight,
+          worldClockWidth: res.data.worldClockWidth,
+          worldClockX: res.data.worldClockX,
+          worldClockY: res.data.worldClockY,
+          trafficReportHeight: res.data.trafficReportHeight,
+          trafficReportWidth: res.data.trafficReportWidth,
+          trafficReportX: res.data.trafficReportX,
+          trafficReportY: res.data.trafficReportY
         };
         console.log("setting new state...");
         this.setState({ ...newState });
@@ -220,16 +222,16 @@ class Main extends Component {
       .catch(err => console.log(err));
   };
 
-  arrayPersistChecker = () => {
-    API.getUserDataById(this.props.match.params.id).then(res => {
-      console.log(res.data[0].activeWidgetsString[0]);
-    });
-  };
+  // arrayPersistChecker = () => {
+  //   API.getUserDataById(this.props.match.params.id).then(res => {
+  //     console.log(res.data.activeWidgetsString[0]);
+  //   });
+  // };
 
-  loadWidgetSettings = activeId => {
-    console.log("widget load instaciated");
-    API.getUserDataById;
-  };
+  // loadWidgetSettings = activeId => {
+  //   console.log("widget load instaciated");
+  //   API.getUserDataById;
+  // };
 
   widgetOnChangeHandler = event => {
     console.log("widget change handled: " + event);
@@ -289,20 +291,43 @@ class Main extends Component {
     }
   };
 
+  handleWidgetNonString = widget => {
+    switch (widget) {
+      case WeatherAPI:
+        return "WeatherAPI";
+      case TwitterWidget:
+        return "TwitterWidget";
+      case Calendar:
+        return "Calendar";
+      case WorldClock:
+        return "WorldClock";
+      case TrafficReport:
+        return "TrafficReport";
+        break;
+    }
+  };
+
+  handleReload = () => {
+    console.log("kek");
+    this.setState({ state: this.state });
+  };
+
   handleWidgetDeleteUpdate = widget => {
+    console.log("string form: " + this.handleWidgetNonString(widget));
     this.changeSettings;
     let emperorsNewWidgets = [...this.state.activeWidgets];
     let emperorsNewWidgetsString = [...this.state.activeWidgetsString];
     emperorsNewWidgets.splice(emperorsNewWidgets.indexOf(widget), 1);
     emperorsNewWidgetsString.splice(
-      emperorsNewWidgetsString.indexOf("WeatherAPI"),
+      emperorsNewWidgetsString.indexOf(this.handleWidgetNonString(widget)),
       1
     );
+    console.log("setting new groove");
     this.setState({
       activeWidgets: emperorsNewWidgets,
       activeWidgetsString: emperorsNewWidgetsString
     });
-    this.forceUpdate();
+    console.log("new groove set");
   };
 
   render() {
