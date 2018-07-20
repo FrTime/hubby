@@ -32,7 +32,7 @@ class LoginHandler extends Component {
       // .then(res => console.log(res.data[0]))
       .then(res => {
         if (this.state.password === res.data[0].password) {
-          this.props.history.push("/Main/:id" + res.data[0]._id);
+          this.props.history.push("/Main/" + res.data[0]._id);
         } else {
           toast(<Msg />);
         }
