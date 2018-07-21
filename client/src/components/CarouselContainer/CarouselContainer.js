@@ -34,7 +34,13 @@ return(
       <p>Display vital information digitally</p>
     </Carousel.Caption>
   </Carousel.Item>
-  
+  {/* <Carousel.Item>
+    <img width={'100%'} height={600} alt="900x500" src={phone} />
+    <Carousel.Caption className='carouseldata'>
+      <h3>DIY hubby</h3>
+      <p>Use our site to power any monitor and utilize the endless possibilities. Simple to make your own!</p>
+    </Carousel.Caption>
+  </Carousel.Item> */}
   </Carousel>
   
 

@@ -1,35 +1,43 @@
-.widget{
-
-    position: relative;
-    bottom: 0px;
-    color: #52c8fa;
-    background-color: #4a4744;
-    /* background-color: rgba(0,0,0,0.23); */
-    border-radius: 5%;
-    overflow: hidden;
-    min-width: 250px;
-    min-height: 250px;
-margin: 0 auto;
-padding: 0;
-height: 100%;
-width: 100%;
-/* border: 2px solid rgb(25, 25, 25); */
-box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-
+.widget {
+  position: relative;
+  bottom: 0px;
+  color: #52c8fa;
+  /* background-color: #4a4744; */
+  background-color: rgba(0, 0, 0, 0.23);
+  border-radius: 5%;
+  overflow: hidden;
+  min-width: 250px;
+  min-height: 250px;
+  margin: 0 auto;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  /* border: 2px solid rgb(25, 25, 25); */
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 p {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 /* .react-calendar{
     background-color: orange;
 } */
 
+.react-calendar {
+  background-color: rgba(0, 0, 0, 0) !important;
+  border: 0 solid rgba(0, 0, 0, 0) !important;
+}
 
+.testing {
+  display: none;
+  position: absolute;
+  right: 1.5%;
+  top: 1.5%;
+  border-radius: 25%;
+  opacity: 0.5;
+}
 
-.react-calendar div{
-    /* background-color: rgba(0,0,0,0.23); */
-    background-color: #4a4744;
-
-  }
+.widget:hover .testing {
+  display: block;
+}
