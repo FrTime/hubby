@@ -27,9 +27,9 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
-
-    db.User.findOneAndUpdate({ _id: req.params.id }, req.body)
-
+    console.log("inside controller");
+    console.log("params id: " + req.params.id)
+    db.User.findOneAndUpdate({_id: req.params.id}, req.body, {upsert: true})
       .then(dbModel => res.json(dbModel))
       .then(console.log("successful update"))
       .catch(err => res.status(422).json(err));

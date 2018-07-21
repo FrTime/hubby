@@ -31,6 +31,7 @@ class LoginHandler extends Component {
     API.getUserDataByEmail(this.state.email)
       // .then(res => console.log(res.data[0]))
       .then(res => {
+        console.log(res.data[0]);
         if (this.state.password === res.data[0].password) {
           this.props.history.push("/Main/" + res.data[0]._id);
         } else {
@@ -59,16 +60,30 @@ class LoginHandler extends Component {
       email: this.state.email,
       //maybe we need to have a method that sets a default value for the weather/calendar api's so when user is created
       //they already have values in their userObject
-      weatherAPIWidth: this.state.weatherAPIWidth,
-      weatherAPIHeight: this.state.weatherAPIHeight,
-      weatherAPIX: this.weatherAPIX,
-      weatherAPIY: this.weatherAPIY,
-      calendarWidth: this.calendarWidth,
-      calendarHeight: this.calendarHeight,
-      calendarX: this.calendarX,
-      calendarY: this.calendarY
+      activeWidgets: [],
+      activeWidgetsString: [],
+      weatherAPIHeight: 300,
+      weatherAPIWidth: 300,
+      weatherAPIX: 300,
+      weatherAPIY: 300,
+      twitterHeight: 500,
+      twitterWidth: 250,
+      twitterX: 500,
+      twitterY: 100,
+      calendarHeight: 250,
+      calendarWidth: 250,
+      calendarX: 250,
+      calendarY: 250,
+      worldClockHeight: 250,
+      worldClockWidth: 250,
+      worldClockX: 250,
+      worldClockY: 250,
+      trafficReportHeight: 250,
+      trafficReportWidth: 250,
+      trafficReportX: 250,
+      trafficReportY: 250
     })
-      .then(() => this.props.history.push("/Main/:id"))
+      .then(this.loadUserSettings(event))
       .catch(err => console.log(err));
   };
 
@@ -90,7 +105,7 @@ class LoginHandler extends Component {
               name="email"
               placeholder="Email Address"
               required
-              autofocus=""
+              autoFocus=""
               onChange={this.handleInputChange}
             />
             <input
@@ -131,13 +146,7 @@ class LoginHandler extends Component {
             />
           </form>
         </div>
-        <footer className="groupCopyright">
-            <small>
-                    <i></i>
-            </small>
-     </footer>
       </div>
-      
     );
   }
 }

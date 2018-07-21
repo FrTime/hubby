@@ -17,4 +17,8 @@ router
 .route("/email/:email")
 .get(userController.findOne);
 
+router
+.route("/id/:id")
+.get(userController.update);
+
 module.exports = router;

@@ -1,11 +1,6 @@
 body {
     background: #4a4744 !important;
   }
-
-  .container{
-    background-color: #222;
-    height:2000px;
-  }
   
   .wrapper {
     margin-top: 80px;
@@ -18,9 +13,10 @@ body {
     margin: 0 auto;
     background-color: white;
     border: 1px solid black;
+    border-radius: 10px;
     box-shadow: 20px 20px;
-    border-radius: 8px;  
-    }
+  }
+
   
   .checkbox {
     margin-bottom: 30px;
