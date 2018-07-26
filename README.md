@@ -14,7 +14,7 @@ The layout will consist of two screens.  The user will initially be met with a s
 
 The second screen will be rendered depending on the user settings loaded.  A new user will be met with a prompt confirming the intended window resolution which will create a virtual window that widgets can be added to, moved, and resized.  An expandable drop menu will used for adding widgets and adjusting their settings.
 
-[A design mock-up can be viewed here.](https://app.moqups.com/charlesjgilker@gmail.com/Uf3AgYR6r3/view/page/a15a05254)
+[The current deployed version can be accessed here.](https://hubby-app.herokuapp.com/)
 
 
 ## Task Management
